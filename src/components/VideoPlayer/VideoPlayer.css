@@ -1,0 +1,11 @@
+.video {
+  width: 50%;
+}
+
+.containerVideo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: black;
+  flex: 1;
+}

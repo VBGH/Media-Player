@@ -36,3 +36,8 @@
     transform: rotate(360deg);
   }
 }
+.player-container {
+  display: flex;
+  flex-direction: row;
+  max-height: 100vh;
+}

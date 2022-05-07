@@ -1,24 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import Player from "./components/Player/Player";
+import "./App.css";
+import React, { useState } from "react";
+import defaultPlaylist from "./constants/playlist.json";
+import { Context } from "./utils/context";
 
 function App() {
+  const [context, setContext] = useState({
+    playlist: defaultPlaylist,
+    playing: true,
+    repeat: false,
+    nowPlaying: 0,
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Context.Provider value={[context, setContext]}>
+      <div className="App">
+        <Player />
+      </div>
+    </Context.Provider>
   );
 }
 

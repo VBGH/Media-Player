@@ -1,0 +1,47 @@
+[
+  {
+    "src": "https://d3tvj3lw2y3r4c.cloudfront.net/WeVideo-FrontEnd-test/counters/1_avc_1080p.mp4",
+    "name": "1_avc_1080p"
+  },
+  {
+    "src": "https://d3tvj3lw2y3r4c.cloudfront.net/WeVideo-FrontEnd-test/counters/1_avc_360p.mp4",
+    "name": "1_avc_360p"
+  },
+  {
+    "src": "https://d3tvj3lw2y3r4c.cloudfront.net/WeVideo-FrontEnd-test/counters/1_avc_uhd.mp4",
+    "name": "1_avc_uhd"
+  },
+  {
+    "src": "https://d3tvj3lw2y3r4c.cloudfront.net/WeVideo-FrontEnd-test/counters/1_vp9_360p.webm",
+    "name": "1_vp9_360p"
+  },
+  {
+    "src": "https://d3tvj3lw2y3r4c.cloudfront.net/WeVideo-FrontEnd-test/counters/1_vp9_1080p.webm",
+    "name": "1_vp9_1080p"
+  },
+
+  {
+    "src": "https://d3tvj3lw2y3r4c.cloudfront.net/WeVideo-FrontEnd-test/counters/2_avc_360p.mp4",
+    "name": "2_avc_360p"
+  },
+  {
+    "src": "https://d3tvj3lw2y3r4c.cloudfront.net/WeVideo-FrontEnd-test/counters/2_avc_1080p.mp4",
+    "name": "2_avc_1080p"
+  },
+  {
+    "src": "https://d3tvj3lw2y3r4c.cloudfront.net/WeVideo-FrontEnd-test/counters/2_avc_uhd.mp4",
+    "name": "2_avc_uhd"
+  },
+  {
+    "src": "https://d3tvj3lw2y3r4c.cloudfront.net/WeVideo-FrontEnd-test/counters/2_vp9_360p.webm",
+    "name": "2_vp9_360p"
+  },
+  {
+    "src": "https://d3tvj3lw2y3r4c.cloudfront.net/WeVideo-FrontEnd-test/counters/2_vp9_1080p.webm",
+    "name": "2_vp9_1080p"
+  },
+  {
+    "src": "https://d3tvj3lw2y3r4c.cloudfront.net/WeVideo-FrontEnd-test/counters/2_vp9_uhd.webm",
+    "name": "2_vp9_uhd"
+  }
+]

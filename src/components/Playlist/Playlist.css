@@ -1,0 +1,37 @@
+ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding-left: 0px;
+}
+li {
+  cursor: pointer;
+  padding: 10px;
+  border: grey 1px solid;
+  margin: 5px 0px;
+  text-align: left;
+  margin: 5px;
+}
+
+.playlist {
+  display: flex;
+  flex-direction: column;
+}
+.controls {
+  display: flex;
+}
+.playing {
+  border: red 1px solid;
+}
+
+.playlist ul {
+  overflow-y: auto;
+}
+.repeat {
+  border-color: blue;
+}
+
+.no-repeat {
+  border-color: red;
+}
