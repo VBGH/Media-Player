@@ -1,5 +1,6 @@
 import { useContext, useEffect, useRef } from "react";
 import { Context } from "../../utils/context";
+import Controls from "../Controls/Controls";
 import "./VideoPlayer.css";
 
 export default function VideoPlayer() {
@@ -19,31 +20,36 @@ export default function VideoPlayer() {
   };
 
   useEffect(() => {
-    videoRef.current.load();
+    videoRef?.current?.load();
   }, [nowPlaying]);
 
   useEffect(() => {
     if (playing) {
-      videoRef.current.play();
+      videoRef?.current?.play();
     } else {
-      videoRef.current.pause();
+      videoRef?.current?.pause();
     }
   }, [playing]);
+
   return (
     <div className="containerVideo">
-      <video
-        className="video"
-        ref={videoRef}
-        autoPlay
-        controls
-        muted
-        loop={repeat}
-        onPlay={onPlay}
-        onPause={onPause}
-        onEnded={onEnded}
-      >
-        <source src={playlist[nowPlaying].src} type="video/webm" />
-      </video>
+      <div className="video-container">
+        <video
+          className="video"
+          ref={videoRef}
+          autoPlay
+          muted
+          loop={repeat}
+          onPlay={onPlay}
+          onPause={onPause}
+          onEnded={onEnded}
+        >
+          <source src={playlist[nowPlaying]?.src} type="video/webm" />
+        </video>
+      </div>
+      <div className="controls-container">
+        <Controls />
+      </div>
     </div>
   );
 }

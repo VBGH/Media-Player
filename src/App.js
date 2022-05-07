@@ -6,15 +6,15 @@ import { Context } from "./utils/context";
 
 function App() {
   const [context, setContext] = useState({
-    playlist: defaultPlaylist,
-    playing: true,
+    playlist: defaultPlaylist.concat(defaultPlaylist),
+    playing: false,
     repeat: false,
-    nowPlaying: 0,
+    nowPlaying: null,
   });
 
   return (
     <Context.Provider value={[context, setContext]}>
-      <div className="App">
+      <div>
         <Player />
       </div>
     </Context.Provider>

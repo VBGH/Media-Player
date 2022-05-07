@@ -1,11 +1,31 @@
 .video {
-  width: 50%;
+  position: fixed;
+  max-width: calc(100% - 80px);
+  max-height: calc(100vh - 80px);
+}
+
+.video-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .containerVideo {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex: 1 1 auto;
   background: black;
-  flex: 1;
+  justify-content: center;
+}
+.containerVideo:hover .controls-container {
+  visibility: visible;
+}
+
+.controls-container {
+  visibility: hidden;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }

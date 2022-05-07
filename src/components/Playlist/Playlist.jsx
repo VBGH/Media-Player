@@ -1,87 +1,78 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { Context } from "../../utils/context";
+
 import "./Playlist.css";
 
 export default function Playlist() {
   const [context, setContext] = useContext(Context);
-  const { playlist, playing, repeat, nowPlaying } = context;
+  const { playlist, nowPlaying } = context;
+  const [scrollX, setscrollX] = useState(0);
+  const [scrolEnd, setscrolEnd] = useState(false);
 
-  useEffect(() => {}, [nowPlaying]);
+  let scrl = useRef(null);
 
-  const pausePlay = (play) => {
-    console.log("playing", play);
-    setContext({ ...context, playing: play });
-  };
+  const slide = (shift) => {
+    scrl.current.scrollLeft += shift;
+    setscrollX(scrollX + shift);
 
-  const toggleRepeat = () => {
-    setContext({ ...context, repeat: !repeat });
-  };
-
-  const prev = () => {
-    setContext({ ...context, nowPlaying: nowPlaying - 1 });
-  };
-
-  const next = () => {
-    setContext({ ...context, nowPlaying: nowPlaying + 1 });
-  };
-
-  const suffle = () => {
-    const newPlaylist = [...playlist.map((item) => ({ ...item }))];
-
-    let currentIndex = newPlaylist.length;
-    let randomIndex;
-    while (currentIndex !== 0) {
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex--;
-      [newPlaylist[currentIndex], newPlaylist[randomIndex]] = [
-        newPlaylist[randomIndex],
-        newPlaylist[currentIndex],
-      ];
+    if (
+      Math.floor(scrl.current.scrollWidth - scrl.current.scrollLeft) <=
+      scrl.current.offsetWidth
+    ) {
+      setscrolEnd(true);
+    } else {
+      setscrolEnd(false);
     }
-    setContext({
-      ...context,
-      playlist: newPlaylist,
-      nowPlaying: newPlaylist.findIndex(
-        (item) => item.name === playlist[nowPlaying].name
-      ),
-    });
   };
+
+  const scrollCheck = () => {
+    setscrollX(scrl.current.scrollLeft);
+    if (
+      Math.floor(scrl.current.scrollWidth - scrl.current.scrollLeft) <=
+      scrl.current.offsetWidth
+    ) {
+      setscrolEnd(true);
+    } else {
+      setscrolEnd(false);
+    }
+  };
+
+  useEffect(() => {
+    scrollCheck();
+    window.addEventListener("resize", scrollCheck);
+  }, []);
 
   return (
     <div className="playlist">
-      <div className="controls">
-        <button disabled={nowPlaying === 0} onClick={prev}>
-          {"<="}
-        </button>
-        {playing ? (
-          <button onClick={() => pausePlay(false)}>{"||"}</button>
-        ) : (
-          <button onClick={() => pausePlay(true)}>{">"}</button>
-        )}
-        <button disabled={nowPlaying >= playlist.length - 1} onClick={next}>
-          {"=>"}
-        </button>
+      <div className="buttons" ref={scrl} onScroll={scrollCheck}>
         <button
-          onClick={toggleRepeat}
-          className={repeat ? "repeat" : "no-repeat"}
+          disabled={scrollX <= 0}
+          onClick={() => slide(-100)}
+          className="scroll left"
         >
-          repeat: {repeat ? " ON" : " OFF"}
+          {"<"}
         </button>
-        <button onClick={suffle}>suffle</button>
+        <div className="list">
+          {playlist.map((item, index) => (
+            <button
+              onClick={() => {
+                setContext({ ...context, nowPlaying: index });
+              }}
+              className={`item ${index === nowPlaying ? "playing" : ""}`}
+              key={item.name + index}
+            >
+              {item.name}
+            </button>
+          ))}
+        </div>
+        <button
+          disabled={scrolEnd}
+          onClick={() => slide(+100)}
+          className="scroll right"
+        >
+          {">"}
+        </button>
       </div>
-      <ul>
-        {playlist.map((item, index) => (
-          <li
-            onClick={() => {
-              setContext({ ...context, nowPlaying: index });
-            }}
-            className={index === nowPlaying ? "playing" : ""}
-            key={item.name}
-          >
-            Video :#{index} - {item.name}
-          </li>
-        ))}
-      </ul>
     </div>
   );
 }

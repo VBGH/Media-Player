@@ -1,0 +1,29 @@
+.controls {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  background-color: grey;
+  opacity: 0.7;
+  width: 100%;
+}
+
+.repeat {
+  border-color: blue;
+}
+
+.no-repeat {
+  border-color: red;
+}
+
+button {
+  padding: 5px;
+  margin: 5px;
+  width: 50px;
+  color: wheat;
+  background-color: black;
+}
+
+button.big {
+  width: 150px;
+}
